@@ -15,18 +15,19 @@ public class VirtualThreadIOBoundExample {
         // Use a virtual thread per task executor
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
             // Submit a large number of I/O-bound tasks
-            IntStream.range(0, 100).forEach(i -> {
+            for (int i = 0; i < 100; i++) {
+                int taskId = i;
                 executor.submit(() -> {
                     try {
                         // Simulate a network call to a web service
-                        HttpResponse<String> response = makeRequest(i);
-                        System.out.println("Response " + i + ": " + response.statusCode() + " on thread " + Thread.currentThread());
+                        HttpResponse<String> response = makeRequest(taskId);
+                        System.out.println("Response " + taskId + ": " + response.statusCode() + " on thread " + Thread.currentThread());
                     } catch (IOException | InterruptedException e) {
                         // Simplified error handling for example
                         e.printStackTrace();
                     }
                 });
-            });
+            }
 
             // The try-with-resources statement will implicitly call executor.close(),
             // which waits for all submitted tasks to complete.
