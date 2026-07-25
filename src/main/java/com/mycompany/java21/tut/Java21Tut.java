@@ -13,6 +13,7 @@ public class Java21Tut {
 
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
+		//add some new feature here
 
 		boolean vThreads = false;
 		System.out.println("Using vThreads: " + vThreads);
