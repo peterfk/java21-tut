@@ -14,7 +14,7 @@ public class Java21Tut {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 
-		boolean vThreads = true;
+		boolean vThreads = false;
 		System.out.println("Using vThreads: " + vThreads);
 
 		long start = System.currentTimeMillis();
